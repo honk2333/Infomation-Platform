@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+	<default-config>
+		<property name="user">root</property>
+		<property name="password">123456</property>
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/store?useUnicode=true&amp;characterEncoding=UTF-8</property>
+	
+	<!-- 连接池参数 -->
+    <!--初始化申请的连接数量-->
+    <property name="initialPoolSize">5</property>
+    <!--最大的连接数量-->
+    <property name="maxPoolSize">10</property>
+    <!--超时时间-->
+    <property name="checkoutTimeout">3000</property>
+  </default-config>
+
+</c3p0-config> 
