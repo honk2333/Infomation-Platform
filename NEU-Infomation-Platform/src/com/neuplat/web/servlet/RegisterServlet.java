@@ -29,15 +29,15 @@ public class RegisterServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		//��ñ�����
+		//获得表单数据
 		Map<String, String[]> properties = request.getParameterMap();
 		User user = new User();
 		try {
-			//�Լ�ָ��һ������ת��������Stringת��Date��
+			//自己指定一个类型转换器（将String转成Date）
 			ConvertUtils.register(new Converter() {
 				@Override
 				public Object convert(Class clazz, Object value) {
-					//��stringת��date
+					//将string转成date
 					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 					Date parse = null;
 					try {
@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
 					return parse;
 				}
 			}, Date.class);
-			//ӳ���װ
+			//映射封装
 			BeanUtils.populate(user, properties);
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
@@ -58,23 +58,23 @@ public class RegisterServlet extends HttpServlet {
 		user.setUid(CommonsUtils.getUUID());
 		//private String telephone;
 		user.setTelephone(null);
-		//private int state;//�Ƿ񼤻�
+		//private int state;//是否激活
 		user.setState(0);
-		//private String code;//������
+		//private String code;//激活码
 		String activeCode = CommonsUtils.getUUID();
 		user.setCode(activeCode);
 		
 		
-		//��user���ݸ�service��
+		//将user传递给service层
 		UserService service = new UserService();
 		boolean isRegisterSuccess = service.regist(user);
 		
-		//�Ƿ�ע��ɹ�
+		//是否注册成功
 		if(isRegisterSuccess){
-			//���ͼ����ʼ�
-			String emailMsg = "��ϲ��ע��ɹ���������������ӽ��м����˻�"
-					+ "<a href='http://localhost:8080/HeimaShop/active?activeCode="+activeCode+"'>"
-							+ "http://localhost:8080/HeimaShop/active?activeCode="+activeCode+"</a>";
+			//发送激活邮件
+			String emailMsg = "恭喜您注册成功，请点击下面的连接进行激活账户"
+					+ "<a href='http://localhost:8080/NEU-Infomation-Platform/active?activeCode="+activeCode+"'>"
+							+ "http://localhost:8080/NEU-Infomation-Platform/active?activeCode="+activeCode+"</a>";
 			try {
 				MailUtils.sendMail(user.getEmail(), emailMsg);
 			} catch (MessagingException e) {
@@ -82,13 +82,12 @@ public class RegisterServlet extends HttpServlet {
 			}
 			
 			
-			//��ת��ע��ɹ�ҳ��
+			//跳转到注册成功页面
 			response.sendRedirect(request.getContextPath()+"/registerSuccess.jsp");
 		}else{
-			//��ת��ʧ�ܵ���ʾҳ��
+			//跳转到失败的提示页面
 			response.sendRedirect(request.getContextPath()+"/registerFail.jsp");
 		}
-		
 		
 	}
 

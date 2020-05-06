@@ -14,13 +14,13 @@ public class ActiveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//��ü�����
+		//获得激活码
 		String activeCode = request.getParameter("activeCode");
 		
 		UserService service = new UserService();
 		service.active(activeCode);
 		
-		//��ת����¼ҳ��
+		//跳转到登录页面
 		response.sendRedirect(request.getContextPath()+"/login.jsp");
 		
 	}
