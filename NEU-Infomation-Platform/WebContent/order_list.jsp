@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>会员登录</title>
@@ -32,12 +31,13 @@ body {
 	<!-- 引入header.jsp -->
 	<jsp:include page="/header.jsp"></jsp:include>
 
+
 	<div class="container">
 		<div class="row">
 			<div style="margin: 0 auto; margin-top: 10px; width: 950px;">
 				<strong>我的订单</strong>
 				<table class="table table-bordered">
-					<c:forEach items="${ordersList}" var="order">
+					<c:forEach items="${ ordersList}" var="order">
 						<tbody>
 							<tr class="success">
 								<th colspan="3">订单编号:${order.oid}</th>
@@ -52,13 +52,13 @@ body {
 							</tr>
 							<c:forEach items="${order.ordersList}" var="orderItem">
 								<tr class="active">
-									<td width="60" width="40%">
-										<input type="hidden" name="id" value="22">
-										<img src="${pageContext.request.contextPath}/${orderItem.product.pimage}" width="70" height="60">
-									</td>
-									<td width="30%"><a href="${pageContext.request.contextPath}/product?method=findProductInfo&pid=${orderItem.product.pid}">
-											${orderItem.product.pid}
-											${orderItem.product.pname}</a></td>
+									<td width="60" width="40%"><input type="hidden" name="id"
+										value="22"> <img
+										src="${pageContext.request.contextPath}/${orderItem.product.pimage}"
+										width="70" height="60"></td>
+									<td width="30%"><a
+										href="${pageContext.request.contextPath}/product?method=findProductInfo&pid=${orderItem.product.pid}">
+											${orderItem.product.pid} ${orderItem.product.pname}</a></td>
 									<td width="20%">￥${orderItem.product.shop_price}</td>
 									<td width="10%">${orderItem.count}</td>
 									<td width="15%"><span class="subtotal">￥${orderItem.subtotal}</span></td>
@@ -73,6 +73,7 @@ body {
 				</table>
 			</div>
 		</div>
+
 		<div style="text-align: center;">
 			<ul class="pagination">
 				<li class="disabled"><a href="#" aria-label="Previous"><span
@@ -94,7 +95,7 @@ body {
 
 	<!-- 引入footer.jsp -->
 	<jsp:include page="/footer.jsp"></jsp:include>
-	
+
 </body>
 
 </html>

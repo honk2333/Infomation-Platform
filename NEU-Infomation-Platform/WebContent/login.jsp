@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>会员登录</title>
+<title>用户登录</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -42,7 +42,7 @@ font {
 	<jsp:include page="/header.jsp"></jsp:include>
 
 
-	<div class="container"
+<div class="container"
 		style="width: 100%; height: 460px; background: #FF2C4C url('images/loginbg.jpg') no-repeat;">
 		<div class="row">
 			<div class="col-md-7">
@@ -52,7 +52,7 @@ font {
 			<div class="col-md-5">
 				<div
 					style="width: 440px; border: 1px solid #E7E7E7; padding: 20px 0 20px 30px; border-radius: 5px; margin-top: 60px; background: #fff;">
-					<font>会员登录</font>USER LOGIN
+					<font>会员登录</font>USER LOGIN ${msg }
 					<div>&nbsp;</div>
 					<form class="form-horizontal" action="${pageContext.request.contextPath}/user?method=userLogin" method="post">
 						<div class="form-group">
@@ -105,7 +105,7 @@ font {
 			</div>
 		</div>
 	</div>
-
+	
 	<!-- 引入footer.jsp -->
 	<jsp:include page="/footer.jsp"></jsp:include>
 

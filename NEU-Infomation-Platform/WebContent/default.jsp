@@ -1,19 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 王杰
-  Date: 2018/6/1
-  Time: 15:11
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-    <%
-        response.sendRedirect(request.getContextPath()+"/product?method=index");
-    %>
-
+	<%
+		response.sendRedirect(request.getContextPath()+"/product?method=index");
+	%>
 </body>
 </html>

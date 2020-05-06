@@ -14,23 +14,26 @@
 </table>
 <table width="100%" border="0">
   <tr>
-      <td>
-          <div class="dtree">
-              <a href="javascript: d.openAll();">展开所有</a> | <a href="javascript: d.closeAll();">关闭所有</a>
-              <script type="text/javascript" src="${pageContext.request.contextPath}/js/dtree.js"></script>
-              <script type="text/javascript">
-                  d = new dTree('d');
-                  d.add('01',-1,'系统菜单树');
-                  d.add('0102','01','分类管理','','','mainFrame');
-                  d.add('010201','0102','分类管理','${pageContext.request.contextPath}/admin?method=findCategoryList','','mainFrame');
-                  d.add('0104','01','商品管理');
-                  d.add('010401','0104','商品管理','${pageContext.request.contextPath}/admin?method=findProductList','','mainFrame');
-                  d.add('0105','01','订单管理');
-                  d.add('010501','0105','订单管理','${pageContext.request.contextPath}/admin?method=findOrderList','','mainFrame');
-                  document.write(d);
-              </script>
-          </div>
-      </td>
+    <td>
+<div class="dtree">
+
+	<a href="javascript: d.openAll();">展开所有</a> | <a href="javascript: d.closeAll();">关闭所有</a>
+	
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/dtree.js"></script>
+	<script type="text/javascript">
+	
+	 d = new dTree('d');
+     d.add('01',-1,'系统菜单树');
+     d.add('0102','01','功能模块管理','','','mainFrame');
+     d.add('010201','0102','功能模块管理','${pageContext.request.contextPath}/admin?method=findCategoryList','','mainFrame');
+     d.add('0104','01','信息管理');
+     d.add('010401','0104','信息管理','${pageContext.request.contextPath}/admin?method=findProductList','','mainFrame');
+     d.add('0105','01','发布管理');
+     d.add('010501','0105','发布管理','${pageContext.request.contextPath}/admin?method=findOrderList','','mainFrame');
+	document.write(d);
+		
+	</script>
+</div>	</td>
   </tr>
 </table>
 </body>

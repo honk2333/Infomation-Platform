@@ -48,9 +48,9 @@
 								style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 
 								<td align="center" width="18%">序号</td>
-								<td align="center" width="17%">商品图片</td>
-								<td align="center" width="17%">商品名称</td>
-								<td align="center" width="17%">商品价格</td>
+								<td align="center" width="17%">图片</td>
+								<td align="center" width="17%">名称</td>
+								<td align="center" width="17%">价格</td>
 								<td align="center" width="17%">是否热门</td>
 								<td width="7%" align="center">编辑</td>
 								<td width="7%" align="center">删除</td>

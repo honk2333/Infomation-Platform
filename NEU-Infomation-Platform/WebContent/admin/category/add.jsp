@@ -7,14 +7,15 @@
 	</HEAD>
 	
 	<body>
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/admin" method="post">
-			<input type="hidden" name="method" value="addCategory">
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminCategoryServlet" method="post">
+			<input type="hidden" name="method" value="save">
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">
 				<tr>
 					<td class="ta_01" align="center" bgColor="#afd1f3" colSpan="4"
 						height="26">
-						<strong>添加分类</strong>
+						<strong><STRONG>添加分类</STRONG>
+						</strong>
 					</td>
 				</tr>
 
@@ -23,7 +24,7 @@
 						分类名称：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<input type="text" name="cname" value="" id="cname" class="bg"/>
+						<input type="text" name="cname" value="" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 				</tr>
 			

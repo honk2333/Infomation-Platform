@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title> 注册失败 </title>
 </head>
 <body>
-    ${msg}
 	<h2>对不起，注册失败，请联系管理员 010-68888888</h2>
 </body>
 </html>

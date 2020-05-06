@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,66 +39,86 @@ body {
 				<li><a href="#">首页</a></li>
 			</ol>
 		</div>
-		<%--商品列表--%>
-		<c:forEach items="${pageInfo.listPage}" var="product">
-			<div class="col-md-2" style="height: 250px">
-				<a href="${pageContext.request.contextPath}/product?method=findProductInfo&pid=${product.pid}">
-					<img src="${pageContext.request.contextPath}/${product.pimage}"
-						 width="170" height="170" style="display: inline-block;">
+		
+		<c:forEach items="${ pageBean.list }" var="pro">
+			<!--显示每一条信息 -->
+			<div class="col-md-6" style="height:250px">
+			<!-- 点击超链接进入信息详情页 -->
+				<a href="${pageContext.request.contextPath }/product?method=productInfo&pid=${pro.pid}&cid=${cid}&currentPage=${pageBean.currentPage}"> 
+					<img src="${pageContext.request.contextPath }/${pro.pimage}" width="170" height="170" style="display: inline-block;">
 				</a>
 				<p>
-					<a href="${pageContext.request.contextPath}/product?method=findProductInfo&pid=${product.pid}" style='color: green'>${product.pname}</a>
+					<a href="${pageContext.request.contextPath }/product?method=productInfo&pid=${pro.pid}&cid=${cid}&currentPage=${pageBean.currentPage}" style='color: green'>${pro.pname }</a>
 				</p>
 				<p>
-					<font color="#FF0000">商城价：&yen;${product.shop_price}</font>
+					<font color="#FF0000">时间：&yen;${pro.pdate }</font>
+					<font color="#FF0000">价值：&yen;${pro.shop_price }</font>
+				</p>
+				<p>
+					<font color="#FF0000">酬劳：&yen;${pro.market_price }</font>
 				</p>
 			</div>
+		
 		</c:forEach>
+
+		
+
 	</div>
 
-	<c:choose>
-		<c:when test="${pageInfo.totalPage<5}">
-			<c:set var="begin" value="1"></c:set>
-			<c:set var="end" value="${pageInfo.totalPage}"></c:set>
-		</c:when>
-		<c:otherwise>
-			<c:set var="begin" value="${pageInfo.currentPage-2}"></c:set>
-			<c:set var="end" value="${pageInfo.currentPage+2}"></c:set>
-			<c:if test="${begin<=0}">
-				<c:set var="begin" value="1"></c:set>
-				<c:set var="end" value="5"></c:set>
-			</c:if>
-			<c:if test="${end>pageInfo.totalPage}">
-				<c:set var="begin" value="${pageInfo.totalPage-4}"></c:set>
-				<c:set var="end" value="${pageInfo.totalPage}"></c:set>
-			</c:if>
-		</c:otherwise>
-	</c:choose>
 	<!--分页 -->
 	<div style="width: 380px; margin: 0 auto; margin-top: 50px;">
 		<ul class="pagination" style="text-align: center; margin-top: 10px;">
-			<%--回到第一页--%>
-			<li>
-				<a href="${pageContext.request.contextPath}/product?method=categoryListByCid&cid=${cid}" aria-label="Previous"><span
-					aria-hidden="true">&laquo;</span>
-				</a>
-			</li>
-			<c:forEach begin="${begin}" end="${end}" var="i">
-				<%--判断是否为当前页--%>
-				<c:if test="${i==pageInfo.currentPage}">
-					<li><a href="javascript:void(0);">${i}</a></li>
+		
+			<!-- 上一页 ,如果当前页是第一页，则点击上一页无效-->
+			<c:if test="${pageBean.currentPage==1 }">
+				<li class="disabled">
+					<a href="javascript:void(0);" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+			</c:if>
+			<!-- 如果当前页是不是第一页，则点击上一页使当前页数减一回到上一页-->
+			<c:if test="${pageBean.currentPage!=1 }">
+				<li class="active">
+					<a href="${pageContext.request.contextPath}/productListByCid?cid=${cid}&currentPage=${pageBean.currentPage-1 }" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+			</c:if>
+			
+		
+			
+			<!-- 显示每一页 -->
+			<c:forEach begin="1" end="${pageBean.totalPage}" var="page">
+				<!-- 判断是否是当前页 ,若是-->
+				<c:if test="${page==pageBean.currentPage }">
+					<li class="active"><a href="javascript:void(0);">${page}</a></li>
 				</c:if>
-
-				<c:if test="${i!=pageInfo.currentPage}">
-					<li><a href="${pageContext.request.contextPath}/product?method=categoryListByCid&cid=${cid}&currentPage=${i}">${i}</a></li>
+				<!-- 判断是否是当前页 ，若不是-->
+				<c:if test="${page!=pageBean.currentPage }">
+					<li><a href="${pageContext.request.contextPath }/productListByCid?cid=${cid}&currentPage=${page}">${page}</a></li>
 				</c:if>
 			</c:forEach>
-			<%--回到最后一页--%>
-			<li>
-				<a href="${pageContext.request.contextPath}/product?method=categoryListByCid&cid=${cid}&currentPage=${pageInfo.totalPage}" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-			     </a>
-			</li>
+		
+			
+			
+			<!-- 下一页，如果当前页是最后一页，则点击下一页无效 -->
+			<c:if test="${pageBean.currentPage==pageBean.totalPage }">
+				<li class="disabled">
+					<a href="javascript:void(0);" aria-label="Next"> 
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</c:if>
+			<!-- 如果当前页不是最后一页，则点击下一页使当前页加一调到下一页 -->
+			<c:if test="${pageBean.currentPage!=pageBean.totalPage }">
+				<li  class="active">
+					<a href="${pageContext.request.contextPath}/productListByCid?cid=${cid}&currentPage=${pageBean.currentPage+1 }" aria-label="Next"> 
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</c:if>
+			
 		</ul>
 	</div>
 	<!-- 分页结束 -->
@@ -116,17 +136,13 @@ body {
 		<div style="overflow: hidden;">
 
 			<ul style="list-style: none;">
-				<c:forEach items="${productList}" var="product">
-					<li style="width: 150px; height: 216px; float: left; margin: 0 8px 0 0;
-					    padding: 0 18px 15px; text-align: center;">
-
-						<img  src="${product.pimage}" width="130px" height="130px" />
-						<p>
-							<font color="green">${product.pname}</font>
-						</p>
+			
+				<c:forEach items="${historyProductList }" var="historyPro">
+					<li style="width: 150px; height: 216; float: left; margin: 0 8px 0 0; padding: 0 18px 15px; text-align: center;">
+						<img src="${pageContext.request.contextPath}/${historyPro.pimage}" width="130px" height="130px" />
 					</li>
 				</c:forEach>
-
+				
 			</ul>
 
 		</div>

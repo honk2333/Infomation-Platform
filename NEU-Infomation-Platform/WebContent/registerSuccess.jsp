@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>注册成功</title>
 </head>
 <body>
 	<h2>恭喜您注册成功，请赶快前往注册邮箱激活您的帐户</h2>

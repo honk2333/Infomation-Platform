@@ -67,7 +67,7 @@
 				<TBODY>
 					<tr>
 						<td class="ta_01" align="center" bgColor="#afd1f3">
-							<strong>订单列表</strong>
+							<strong>发布列表</strong>
 						</TD>
 					</tr>
 					
@@ -83,19 +83,19 @@
 										序号
 									</td>
 									<td align="center" width="10%">
-										订单编号
+										编号
 									</td>
 									<td align="center" width="10%">
-										订单金额
+										金额
 									</td>
 									<td align="center" width="10%">
 										收货人
 									</td>
 									<td align="center" width="10%">
-										订单状态
+										状态
 									</td>
 									<td align="center" width="50%">
-										订单详情
+										详情
 									</td>
 								</tr>
 
