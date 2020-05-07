@@ -31,7 +31,7 @@
 					<!-- 						<a href="product_info.htm"> -->
 					<a
 						href='${pageContext.request.contextPath}/product?method=productList&cid=1'>
-						<img src="products/hao/middle01.jpg" width="516px" height="200px"
+						<img src="products/hao/middle01.png" width="100px" height="100px"
 						style="display: inline-block;">
 					</a>
 				</div>
@@ -63,7 +63,7 @@
 				<div class="col-md-6"
 					style="text-align: center; height: 200px; padding: 0px;">
 					<a href='${pageContext.request.contextPath}/product?method=productList&cid=2'>
-						<img src="products/hao/middle01.jpg" width="516px" height="200px"
+						<img src="products/hao/middle02.png" width="100px" height="100px"
 						style="display: inline-block;">
 					</a>
 				</div>
@@ -95,7 +95,7 @@
 				<div class="col-md-6"
 					style="text-align: center; height: 200px; padding: 0px;">
 					<a href='${pageContext.request.contextPath}/product?method=productList&cid=3'> <img
-						src="products/hao/middle01.jpg" width="516px" height="200px"
+						src="products/hao/middle03.png" width="100px" height="100px"
 						style="display: inline-block;">
 					</a>
 				</div>
